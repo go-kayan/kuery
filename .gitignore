@@ -1,0 +1,30 @@
+# Diretórios e arquivos do Go
+/bin/
+/pkg/
+**/*.exe
+**/*.exe~
+**/*.dll
+**/*.so
+**/*.dylib
+**/*.test
+**/*.out
+
+# Arquivos do Go Modules
+go.sum
+go.work
+go.work.sum
+
+# Diretórios do GoLand/JetBrains
+.idea/
+*.iml
+
+# Arquivos de build temporários
+/tmp/
+*.log
+
+# Diretórios de dependências externas do Go (caso use vendor)
+vendor/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db

@@ -9,7 +9,6 @@ type KUpdate struct {
 	query    string
 	setParts []string
 	where    string
-	limit    string
 }
 
 func Update(table string) *KUpdate {
@@ -32,11 +31,6 @@ func (k *KUpdate) Where(condition string) *KUpdate {
 	return k
 }
 
-func (k *KUpdate) Limit(limit int) *KUpdate {
-	k.limit = fmt.Sprintf(" LIMIT (%d)", limit)
-	return k
-}
-
 func (k *KUpdate) Build() string {
 	finalQuery := k.query
 	if len(k.setParts) > 0 {
@@ -44,9 +38,6 @@ func (k *KUpdate) Build() string {
 	}
 	if k.where != "" {
 		finalQuery += k.where
-	}
-	if k.limit != "" {
-		finalQuery += k.limit
 	}
 	return finalQuery
 }

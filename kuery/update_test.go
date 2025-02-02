@@ -52,33 +52,3 @@ func TestUpdateWithWhere(t *testing.T) {
 		t.Errorf("Esperado: %s, Obtido: %s", expected, query)
 	}
 }
-
-func TestUpdateWithLimit(t *testing.T) {
-	query := Update("usuarios").
-		Set(map[string]interface{}{"nome": "João"}).
-		Limit(1).
-		Build()
-
-	expected := "UPDATE usuarios SET nome = 'João' LIMIT (1)"
-
-	if query != expected {
-		t.Errorf("Esperado: %s, Obtido: %s", expected, query)
-	}
-}
-
-func TestUpdateFull(t *testing.T) {
-	query := Update("usuarios").
-		Set(map[string]interface{}{
-			"nome":  "João",
-			"email": "joao@email.com",
-		}).
-		Where("id = 1").
-		Limit(1).
-		Build()
-
-	expected := "UPDATE usuarios SET nome = 'João', email = 'joao@email.com' WHERE id = 1 LIMIT (1)"
-
-	if query != expected {
-		t.Errorf("Esperado: %s, Obtido: %s", expected, query)
-	}
-}

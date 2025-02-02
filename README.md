@@ -20,7 +20,7 @@ package main
 
 import (
 	"fmt"
-	"kuery"
+	"github.com/go-kayan/kuery"
 )
 
 func main() {
@@ -28,11 +28,13 @@ func main() {
 		Columns("nome", "email").
 		Values("João", "joao@email.com").
 		Values("Maria", "maria@email.com").
+		Returning("id", "nome").
 		Build()
 
 	fmt.Println(query)
 }
-// INSERT INTO usuarios (nome, email) VALUES ('João', 'joao@email.com'), ('Maria', 'maria@email.com')
+
+//INSERT INTO usuarios (nome, email) VALUES ('João', 'joao@email.com'), ('Maria', 'maria@email.com') RETURNING id, nome
 ```
 
 ### 🔹 **Delete**
@@ -48,15 +50,13 @@ import (
 func main() {
 	query := kuery.Delete("usuarios").
 		Where("id = 1").
-		Limit(1).
 		Build()
 
 	fmt.Println(query)
 }
 
-// DELETE FROM usuarios WHERE id = 1 LIMIT (1)
+// DELETE FROM usuarios WHERE id = 1 LIMIT 
 ```
-
 ### 🔹 **Update**
 ```go
 package main
@@ -73,29 +73,12 @@ func main() {
 			"email": "joaosilva@email.com",
 		}).
 		Where("id = 1").
-		Limit(1).
 		Build()
 
 	fmt.Println(query)
 }
-// UPDATE usuarios SET nome = 'João', email = 'joao@email.com' WHERE id = 1 LIMIT (1)
+// UPDATE usuarios SET nome = 'João', email = 'joao@email.com' WHERE id = 1 
 ```
-### 🔹 **Select**
-# Kuery - Construtor de Queries SQL em Go
-
-`Kuery` é uma biblioteca simples e fluida para construir queries SQL em Go de forma dinâmica e segura.  
-Ela suporta comandos `SELECT`, `INSERT`, `UPDATE` e `DELETE` com uma API intuitiva baseada em encadeamento de métodos.
-
----
-
-## 🚀 Instalação
-
-Basta copiar os arquivos para o seu projeto Go e importá-los conforme necessário.
-
----
-
-## 📌 Como Usar
-
 ### 🔹 **Select**
 
 ```go
@@ -120,11 +103,3 @@ func main() {
 // SELECT id, nome FROM usuarios WHERE idade > 18 AND ativo = true ORDER BY nome ASC LIMIT 10
 ```
 
----
-
-### 🔥 **O que foi atualizado?**
-✅ **Explicação completa do comando `UPDATE`**  
-✅ **Exemplo de código para `UPDATE`**  
-✅ **Saída esperada para validação**
-
-Agora o **README** cobre **INSERT, UPDATE e DELETE** de forma clara. Se precisar de mais ajustes, me avise! 🚀🔥

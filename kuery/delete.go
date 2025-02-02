@@ -8,7 +8,6 @@ import (
 type KDelete struct {
 	query string
 	where string
-	limit string
 }
 
 func Delete(table string) *KDelete {
@@ -22,18 +21,10 @@ func (k *KDelete) Where(condition string) *KDelete {
 	return k
 }
 
-func (k *KDelete) Limit(limit int) *KDelete {
-	k.limit = fmt.Sprintf(" LIMIT (%d)", limit)
-	return k
-}
-
 func (k *KDelete) Build() string {
 	finalQuery := k.query
 	if k.where != "" {
 		finalQuery += k.where
-	}
-	if k.limit != "" {
-		finalQuery += k.limit
 	}
 	return strings.TrimSpace(finalQuery)
 }

@@ -57,7 +57,7 @@ func main() {
 	fmt.Println(query)
 }
 
-// DELETE FROM usuarios WHERE id = 1 LIMIT 
+// DELETE FROM usuarios WHERE id = 1
 ```
 ### 🔹 **Update**
 ```go

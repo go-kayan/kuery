@@ -5,14 +5,16 @@ Ela suporta comandos `SELECT`, `INSERT`, `UPDATE` e `DELETE` com uma API intuiti
 
 ---
 
-## 🚀 Instalação
+## 📦 Instalação
 
-Basta copiar os arquivos para o seu projeto Go e importá-los conforme necessário.
+Para adicionar a biblioteca ao seu projeto, execute:
 
+```sh
+go get github.com/go-kayan/kuery
+```
 ---
 
 ## 📌 Como Usar
-
 ### 🔹 **Insert**
 
 ```go
